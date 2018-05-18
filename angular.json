@@ -116,6 +116,240 @@
           }
         }
       }
+    },
+    "sim": {
+      "root": "projects/sim",
+      "sourceRoot": "projects/sim/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sim/tsconfig.lib.json",
+            "project": "projects/sim/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/sim/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sim/src/test.ts",
+            "tsConfig": "projects/sim/tsconfig.spec.json",
+            "karmaConfig": "projects/sim/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sim/tsconfig.lib.json",
+              "projects/sim/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "db": {
+      "root": "projects/db",
+      "sourceRoot": "projects/db/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/db/tsconfig.lib.json",
+            "project": "projects/db/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/db/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/db/src/test.ts",
+            "tsConfig": "projects/db/tsconfig.spec.json",
+            "karmaConfig": "projects/db/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/db/tsconfig.lib.json",
+              "projects/db/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "field": {
+      "root": "projects/field",
+      "sourceRoot": "projects/field/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/field/tsconfig.lib.json",
+            "project": "projects/field/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/field/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/field/src/test.ts",
+            "tsConfig": "projects/field/tsconfig.spec.json",
+            "karmaConfig": "projects/field/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/field/tsconfig.lib.json",
+              "projects/field/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "spitball": {
+      "root": "projects/spitball/",
+      "sourceRoot": "projects/spitball/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/spitball",
+            "index": "projects/spitball/src/index.html",
+            "main": "projects/spitball/src/main.ts",
+            "polyfills": "projects/spitball/src/polyfills.ts",
+            "tsConfig": "projects/spitball/tsconfig.app.json",
+            "assets": [
+              "projects/spitball/src/favicon.ico",
+              "projects/spitball/src/assets"
+            ],
+            "styles": [
+              "projects/spitball/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/spitball/src/environments/environment.ts",
+                  "with": "projects/spitball/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "spitball:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "spitball:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "spitball:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/spitball/src/test.ts",
+            "polyfills": "projects/spitball/src/polyfills.ts",
+            "tsConfig": "projects/spitball/tsconfig.spec.json",
+            "karmaConfig": "projects/spitball/karma.conf.js",
+            "styles": [
+              "projects/spitball/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/spitball/src/favicon.ico",
+              "projects/spitball/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/spitball/tsconfig.app.json",
+              "projects/spitball/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "spitball-e2e": {
+      "root": "projects/spitball-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/spitball-e2e/protractor.conf.js",
+            "devServerTarget": "spitball:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/spitball-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "spitBall"
