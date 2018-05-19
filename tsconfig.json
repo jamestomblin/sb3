@@ -25,6 +25,9 @@
       ],
       "field": [
         "dist/field"
+      ],
+      "wasm": [
+        "dist/wasm"
       ]
     }
   }

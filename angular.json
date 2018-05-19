@@ -245,6 +245,46 @@
           }
         }
       }
+    },
+    "wasm": {
+      "root": "projects/wasm",
+      "sourceRoot": "projects/wasm/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/wasm/tsconfig.lib.json",
+            "project": "projects/wasm/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/wasm/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/wasm/src/test.ts",
+            "tsConfig": "projects/wasm/tsconfig.spec.json",
+            "karmaConfig": "projects/wasm/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/wasm/tsconfig.lib.json",
+              "projects/wasm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "spitBall"
